@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    /* Zest Search Design System - Dark */
+    --background: 220 25% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 25% 11%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 25% 11%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 45 100% 51%;
+    --primary-foreground: 220 25% 7%;
+
+    --secondary: 220 22% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 20% 19%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 45 100% 51%;
+    --accent-foreground: 220 25% 7%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 20% 17%;
+    --input: 220 20% 17%;
+    --ring: 45 100% 51%;
+
+    --radius: 0.5rem;
+
+    /* Custom Zest tokens */
+    --yellow-glow: 45 100% 51%;
+    --surface-elevated: 220 22% 13%;
+    --text-secondary: 220 6% 55%;
+    --gradient-yellow: linear-gradient(135deg, hsl(45, 100%, 51%) 0%, hsl(38, 100%, 45%) 100%);
+  }
+
+  .dark {
+    --background: 220 25% 7%;
+    --foreground: 0 0% 98%;
+    --card: 220 25% 11%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 25% 11%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 45 100% 51%;
+    --primary-foreground: 220 25% 7%;
+    --secondary: 220 22% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 20% 19%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 45 100% 51%;
+    --accent-foreground: 220 25% 7%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 20% 17%;
+    --input: 220 20% 17%;
+    --ring: 45 100% 51%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-yellow);
+  }
+
+  .glow-yellow {
+    box-shadow: 0 0 40px hsl(var(--yellow-glow) / 0.3);
+  }
+
+  .border-gradient {
+    border-image: var(--gradient-yellow) 1;
+  }
+
+  /* Micro-animation utilities */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px hsl(var(--primary) / 0.15);
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-200 ease-out;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* Custom animations */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out forwards;
+}
+
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+
+@media (max-width: 767px) {
+  .marquee-mobile {
+    animation-duration: 24s !important;
+  }
+}
