@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import fonoaLogo from "@/assets/logos/fonoa-v2.png";
 import duvoLogo from "@/assets/logos/duvo.png";
 import gradientLabsLogo from "@/assets/logos/gradient-labs-v2.png";
@@ -24,45 +25,45 @@ const hires: HireCard[] = [
     company: "Productboard",
     roles: ["Director of Product Design"],
     logo: productboardLogo,
-    logoMaxClassName: "max-h-9 sm:max-h-10 md:max-h-11",
+    logoMaxClassName: "md:max-h-11",
   },
   {
     company: "Portswigger",
     roles: ["VP of Product Management"],
     logo: portswiggerLogo,
-    logoMaxClassName: "max-h-7 sm:max-h-8 md:max-h-9",
+    logoMaxClassName: "md:max-h-9",
   },
   {
     company: "Mirelo AI",
     roles: ["Principal Product Designer"],
     logo: mireloLogo,
-    logoMaxClassName: "max-h-10 sm:max-h-11 md:max-h-12",
+    logoMaxClassName: "md:max-h-12",
   },
   {
     company: "Fonoa",
     roles: ["Principal Product Manager"],
     logo: fonoaLogo,
-    logoMaxClassName: "h-5 sm:h-6 md:h-7 max-h-none",
-    logoImgClassName: "max-w-[140px] object-left",
+    logoMaxClassName: "md:h-7 md:max-h-none",
+    logoImgClassName: "md:max-w-[140px] md:object-left",
   },
   { company: "Gradient Labs", roles: ["Founding Designer"], logo: gradientLabsLogo },
   {
     company: "Perk",
     roles: ["Lead Group Product Manager"],
     logo: perkLogo,
-    logoMaxClassName: "max-h-11 sm:max-h-12 md:max-h-14",
+    logoMaxClassName: "md:max-h-14",
   },
   {
     company: "Tebi",
     roles: ["Product Design Lead"],
     logo: tebiLogo,
-    logoMaxClassName: "max-h-6 sm:max-h-7 md:max-h-8",
+    logoMaxClassName: "md:max-h-8",
   },
   {
     company: "Paysend",
     roles: ["Director of Product"],
     logo: paysendLogo,
-    logoMaxClassName: "max-h-5 sm:max-h-6 md:max-h-7",
+    logoMaxClassName: "md:max-h-7",
   },
 ];
 
@@ -83,24 +84,33 @@ const TrackRecord = () => {
           </h2>
 
           {/* Logo + roles grid (non-clicky) */}
-          <div className="mt-6 grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 items-start">
-            {hires.map((hire) => (
+          <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 items-start">
+            {hires.map((hire, index) => (
               <div
                 key={hire.company}
-                className="flex flex-col items-center text-center p-4 sm:p-5 md:p-6 rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+                className={cn(
+                  "flex flex-col items-center text-center p-4 md:p-6 rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5",
+                  index === hires.length - 1 &&
+                    hires.length % 2 === 1 &&
+                    "col-span-2 max-w-[calc(50%-0.5rem)] mx-auto md:col-span-1 md:max-w-none"
+                )}
               >
-                <div className="h-12 sm:h-14 md:h-16 w-full flex items-center justify-center shrink-0">
+                <div className="h-14 md:h-16 w-full flex items-center justify-center shrink-0">
                   <img
                     src={hire.logo}
                     alt={hire.company}
-                    className={`${hire.logoMaxClassName ?? "max-h-8 sm:max-h-9 md:max-h-10"} ${hire.logoImgClassName ?? "max-w-[88%] object-center"} w-auto object-contain`}
+                    className={cn(
+                      "max-h-9 max-w-[85%] w-auto object-contain object-center",
+                      hire.logoMaxClassName ?? "md:max-h-10",
+                      hire.logoImgClassName
+                    )}
                     style={logoWhiteFilter}
                   />
                 </div>
 
-                <div className="mt-3 md:mt-4 w-full min-h-[2.5rem] sm:min-h-[2.75rem] space-y-1.5 flex flex-col justify-start">
+                <div className="mt-3 md:mt-4 w-full space-y-1.5 flex flex-col justify-start">
                   {hire.roles.map((role) => (
-                    <div key={role} className="text-sm md:text-sm text-foreground/80 leading-snug">
+                    <div key={role} className="text-xs sm:text-sm text-foreground/80 leading-snug">
                       {role}
                     </div>
                   ))}
