@@ -1,55 +1,28 @@
-import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import causalyLogo from "@/assets/logos/causaly-v2.png";
+import gradientLabsLogo from "@/assets/logos/gradient-labs-v2.png";
+import portswiggerLogo from "@/assets/logos/portswigger-v2.png";
+import productboardLogo from "@/assets/logos/productboard.png";
 
-const categories = [
+type HireCard = {
+  company: string;
+  roles: string[];
+  logo?: string;
+};
+
+const hires: HireCard[] = [
+  { company: "Gradient Labs", roles: ["Founding Designer"], logo: gradientLabsLogo },
+  { company: "Mirelo AI", roles: ["Founding Designer"] },
+  { company: "Portswigger", roles: ["VP of Product Management"], logo: portswiggerLogo },
+  { company: "Duvo", roles: ["Head of Product"] },
   {
-    title: "Founding Hires",
-    placements: [
-      { role: "Founding Designer", company: "Gradient Labs", wrap: true },
-      { role: "Founding Designer", company: "Mirelo AI", wrap: true },
-      { role: "Founding Designer", company: "Rekord", wrap: true },
-      { role: "Founding Product Manager", company: "Loctax" },
-      { role: "Founding Designer", company: "Pixaera", wrap: true },
-      { role: "Founding Designer", company: "Tembo", wrap: true },
-    ],
+    company: "Productboard",
+    roles: ["Director of Product Design", "Principal Product Designer"],
+    logo: productboardLogo,
   },
-  {
-    title: "Senior Leadership Hires",
-    placements: [
-      { role: "VP of Product Management", company: "Portswigger" },
-      { role: "Director of Product Design", company: "Productboard" },
-      { role: "Director of Product Management", company: "UMAIN" },
-      { role: "Director of Product Design", company: "Paysend" },
-      { role: "Senior Group Product Manager", company: "Perk" },
-      { role: "Interim VP of Design", company: "Emitwise", wrap: true },
-    ],
-  },
-  {
-    title: "Senior IC Hires",
-    placements: [
-      { role: "Principal Product Manager", company: "Productboard" },
-      { role: "Principal Product Designer", company: "Productboard" },
-      { role: "Principal Product Manager", company: "Fonoa", wrap: true },
-      { role: "Product Design Lead", company: "Tebi", wrap: true },
-      { role: "Staff Product Manager", company: "Causaly", wrap: true },
-      { role: "Staff Product Designer", company: "Emitwise", wrap: true },
-    ],
-  },
+  { company: "Causaly", roles: ["Staff Product Manager"], logo: causalyLogo },
 ];
 
 const TrackRecord = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const nextSlide = () => {
-    setActiveIndex((prev) => (prev + 1) % categories.length);
-  };
-
-  const prevSlide = () => {
-    setActiveIndex((prev) => (prev - 1 + categories.length) % categories.length);
-  };
-
-  const current = categories[activeIndex];
 
   return (
     <section id="track-record" className="py-16 lg:py-20 relative overflow-hidden">
@@ -65,75 +38,42 @@ const TrackRecord = () => {
             Examples of Product and Design hires across Europe
           </h2>
 
-          {/* Category tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-6">
-            {categories.map((cat, index) => (
-              <button
-                key={cat.title}
-                onClick={() => setActiveIndex(index)}
-                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                  index === activeIndex
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-secondary text-secondary-foreground hover:bg-primary/20 hover:text-primary"
-                }`}
+          {/* Logo + roles grid (non-clicky) */}
+          <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 text-left">
+            {hires.map((hire) => (
+              <div
+                key={hire.company}
+                className="p-5 md:p-6 rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
               >
-                {cat.title}
-              </button>
+                <div className="h-10 md:h-12 flex items-center">
+                  {hire.logo ? (
+                    <img
+                      src={hire.logo}
+                      alt={hire.company}
+                      className="h-8 md:h-9 w-auto object-contain brightness-0 invert opacity-90"
+                      style={{ objectPosition: "left" }}
+                    />
+                  ) : (
+                    <span className="text-base md:text-lg font-bold tracking-tight">
+                      {hire.company}
+                    </span>
+                  )}
+                </div>
+
+                <div className="mt-3 space-y-1.5">
+                  {hire.roles.map((role) => (
+                    <div key={role} className="text-sm md:text-sm text-foreground/80 leading-snug">
+                      {role}
+                    </div>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
 
-          {/* Placements card */}
-          <div className="group p-6 md:p-8 rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/50 transition-all duration-500 hover-lift min-h-[130px]">
-            <h3 className="text-2xl md:text-3xl font-bold text-primary mb-3">{current.title}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left max-w-xl mx-auto">
-              {current.placements.map((placement, idx) => (
-                <div key={idx} className="flex items-start gap-2 text-foreground">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2" />
-                   <span className="text-sm md:text-base">
-                    {placement.role} <br /><span className="text-primary">{placement.company}</span>
-                   </span>
-                </div>
-              ))}
-            </div>
-          </div>
           <p className="mt-4 text-sm text-foreground/60">
             All of these searches were for PE/VC-backed startups across Europe, with the majority coming via VC referrals.
           </p>
-
-          {/* Navigation */}
-          <div className="flex items-center justify-center gap-4 mt-6">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={prevSlide}
-              className="rounded-full transition-all duration-200 hover:scale-110 hover:border-primary/50"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </Button>
-            
-            <div className="flex gap-2">
-              {categories.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === activeIndex 
-                      ? "bg-primary w-6" 
-                      : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                  }`}
-                />
-              ))}
-            </div>
-
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={nextSlide}
-              className="rounded-full transition-all duration-200 hover:scale-110 hover:border-primary/50"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </Button>
-          </div>
         </div>
       </div>
     </section>
