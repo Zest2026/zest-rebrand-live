@@ -84,18 +84,18 @@ const TrackRecord = () => {
           </h2>
 
           {/* Logo + roles grid (non-clicky) */}
-          <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 items-stretch">
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {hires.map((hire) => (
               <div
                 key={hire.company}
-                className="flex flex-col items-center justify-between text-center w-full h-[11.5rem] md:h-auto p-4 md:p-6 rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+                className="flex flex-col items-center text-center w-full p-5 md:p-6 rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
               >
-                <div className="h-14 md:h-16 w-full flex items-center justify-center shrink-0">
+                <div className="h-16 md:h-16 w-full flex items-center justify-center shrink-0">
                   <img
                     src={hire.logo}
                     alt={hire.company}
                     className={cn(
-                      "h-9 w-auto max-w-[75%] object-contain object-center md:h-auto md:max-h-none",
+                      "h-11 w-auto max-w-[70%] object-contain object-center md:h-auto md:max-w-[88%] md:max-h-none",
                       hire.logoMaxClassName ?? "md:max-h-10",
                       hire.logoImgClassName
                     )}
@@ -103,12 +103,9 @@ const TrackRecord = () => {
                   />
                 </div>
 
-                <div className="flex-1 flex items-center justify-center w-full min-h-0 px-0.5 mt-2 md:mt-4 md:flex-none md:block">
+                <div className="mt-4 w-full md:mt-4">
                   {hire.roles.map((role) => (
-                    <div
-                      key={role}
-                      className="text-[11px] leading-tight text-foreground/80 line-clamp-3 md:text-sm md:leading-snug md:line-clamp-none"
-                    >
+                    <div key={role} className="text-sm text-foreground/80 leading-snug">
                       {role}
                     </div>
                   ))}
