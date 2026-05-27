@@ -84,23 +84,18 @@ const TrackRecord = () => {
           </h2>
 
           {/* Logo + roles grid (non-clicky) */}
-          <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 items-start">
-            {hires.map((hire, index) => (
+          <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 items-stretch">
+            {hires.map((hire) => (
               <div
                 key={hire.company}
-                className={cn(
-                  "flex flex-col items-center text-center p-4 md:p-6 rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5",
-                  index === hires.length - 1 &&
-                    hires.length % 2 === 1 &&
-                    "col-span-2 max-w-[calc(50%-0.5rem)] mx-auto md:col-span-1 md:max-w-none"
-                )}
+                className="flex flex-col items-center justify-between text-center w-full h-[11.5rem] md:h-auto p-4 md:p-6 rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
               >
                 <div className="h-14 md:h-16 w-full flex items-center justify-center shrink-0">
                   <img
                     src={hire.logo}
                     alt={hire.company}
                     className={cn(
-                      "max-h-9 max-w-[85%] w-auto object-contain object-center",
+                      "h-9 w-auto max-w-[75%] object-contain object-center md:h-auto md:max-h-none",
                       hire.logoMaxClassName ?? "md:max-h-10",
                       hire.logoImgClassName
                     )}
@@ -108,9 +103,12 @@ const TrackRecord = () => {
                   />
                 </div>
 
-                <div className="mt-3 md:mt-4 w-full space-y-1.5 flex flex-col justify-start">
+                <div className="flex-1 flex items-center justify-center w-full min-h-0 px-0.5 mt-2 md:mt-4 md:flex-none md:block">
                   {hire.roles.map((role) => (
-                    <div key={role} className="text-xs sm:text-sm text-foreground/80 leading-snug">
+                    <div
+                      key={role}
+                      className="text-[11px] leading-tight text-foreground/80 line-clamp-3 md:text-sm md:leading-snug md:line-clamp-none"
+                    >
                       {role}
                     </div>
                   ))}
