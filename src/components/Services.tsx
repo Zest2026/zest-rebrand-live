@@ -25,7 +25,7 @@ const founders = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-16 lg:py-20 relative overflow-hidden">
+    <section id="services" className="pt-14 pb-16 lg:pt-20 lg:pb-20 relative overflow-hidden">
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
       
@@ -37,13 +37,13 @@ const Services = () => {
               What We Do
             </span>
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Product Management<br />and Design recruitment.
+              Product Management and Design recruitment across Europe
             </h2>
             <p className="text-lg text-foreground/75 mb-4">
               We run a small number of searches at any time, each personally led by one of the founders. Our focus is narrow and deliberate: Product and Design leadership at PE and VC-backed companies.
             </p>
             <p className="text-lg text-foreground/75 font-bold mb-2">
-              From Founding Product and Design leaders to Principal ICs, Directors and VPs across Europe.
+              From Founding Product and Design leaders to Principal ICs, Directors and VPs.
             </p>
           </div>
 

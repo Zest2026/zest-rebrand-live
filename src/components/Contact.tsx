@@ -3,7 +3,7 @@ import { ArrowRight, Mail, Linkedin } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-10 lg:py-14 relative overflow-hidden">
+    <section id="contact" className="pt-14 pb-16 lg:pt-20 lg:pb-20 relative overflow-hidden">
       {/* Subtle gradient accents */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-2xl pointer-events-none" />

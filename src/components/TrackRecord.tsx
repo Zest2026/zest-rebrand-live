@@ -34,7 +34,7 @@ const hires: HireCard[] = [
 const TrackRecord = () => {
 
   return (
-    <section id="track-record" className="py-16 lg:py-20 relative overflow-hidden">
+    <section id="track-record" className="pt-4 pb-16 lg:pt-6 lg:pb-20 relative overflow-hidden">
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
       
