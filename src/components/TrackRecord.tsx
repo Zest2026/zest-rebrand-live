@@ -43,12 +43,12 @@ const TrackRecord = () => {
           <span className="text-primary font-bold text-sm tracking-wide uppercase mb-4 block">
             Track Record
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold mb-8">
             Examples of Product and Design hires across Europe
           </h2>
 
           {/* Logo + roles grid (non-clicky) */}
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {hires.map((hire) => (
               <div
                 key={hire.company}

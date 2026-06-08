@@ -7,7 +7,7 @@ const founders = [
     name: "Allen Bastow",
     role: "Co-Founder",
     focus: "Product Search",
-    bio: "10+ years recruiting Product leaders across Europe.\nFrom Founding PMs to VPs.",
+    bio: "13+ years' experience in product management recruitment across Europe and North America.",
     initials: "AB",
     image: allenImage,
     linkedin: "https://www.linkedin.com/in/allenbastow/",
@@ -16,7 +16,7 @@ const founders = [
     name: "Luke Pallett",
     role: "Co-Founder",
     focus: "Design Search",
-    bio: "10+ years recruiting Design leaders across Europe.\nFrom Founding Designers to VPs.",
+    bio: "12 years' experience in product design recruitment across Europe.",
     initials: "LP",
     image: lukeImage,
     linkedin: "https://www.linkedin.com/in/luke-pallett/",
@@ -40,19 +40,19 @@ const Services = () => {
               Product Management<br />and Design recruitment.
             </h2>
             <p className="text-lg text-foreground/75 mb-4">
-              We run a small number of searches at any time, each personally led by one of the founders. Our focus is narrow and deliberate: senior Product and Design leaders in VC and PE-backed companies across Europe.
+              We run a small number of searches at any time, each personally led by one of the founders. Our focus is narrow and deliberate: Product and Design leadership at PE and VC-backed companies.
             </p>
             <p className="text-lg text-foreground/75 font-bold mb-2">
-              From Founding Product and Design leaders to Principal ICs, Directors and VPs.
+              From Founding Product and Design leaders to Principal ICs, Directors and VPs across Europe.
             </p>
           </div>
 
           {/* Founders side by side */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto mt-4 items-stretch">
             {founders.map((founder) => (
               <div
                 key={founder.name}
-                className="flex items-center gap-4 p-5 rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 text-left"
+                className="flex items-start gap-4 p-5 h-full w-full rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 text-left"
               >
                 {founder.image ? (
                   <img src={founder.image} alt={founder.name} className="w-28 h-28 rounded-full object-cover shrink-0 ring-2 ring-primary/20" />
@@ -61,7 +61,7 @@ const Services = () => {
                     <span className="text-2xl font-bold text-primary">{founder.initials}</span>
                   </div>
                 )}
-                <div className="flex-1">
+                <div className="flex flex-col flex-1 min-w-0">
                   <p className="text-sm font-medium text-primary mb-1">{founder.focus}</p>
                   <div className="flex items-center gap-2">
                     <p className="text-lg font-bold tracking-tight">{founder.name}</p>
@@ -75,7 +75,9 @@ const Services = () => {
                     </a>
                   </div>
                   <p className="text-sm text-foreground/60">{founder.role}</p>
-                  {founder.bio && <p className="text-xs text-foreground/50 mt-1 whitespace-pre-line">{founder.bio}</p>}
+                  {founder.bio && (
+                    <p className="text-xs text-foreground/50 mt-1 min-h-[2.75rem] leading-relaxed">{founder.bio}</p>
+                  )}
                 </div>
               </div>
             ))}

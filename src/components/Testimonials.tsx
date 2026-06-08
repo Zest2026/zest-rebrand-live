@@ -6,12 +6,14 @@ import charlesImage from "@/assets/testimonials/charles.png";
 import alexImage from "@/assets/testimonials/alex.jpeg";
 import chrisImage from "@/assets/testimonials/chris.jpeg";
 import oliviaImage from "@/assets/testimonials/olivia.png";
+import sumeetaImage from "@/assets/testimonials/sumeeta.png";
 import { Button } from "@/components/ui/button";
 import productboardLogo from "@/assets/logos/productboard.png";
 import localglobeLogo from "@/assets/logos/localglobe.png";
 import causalyLogo from "@/assets/logos/causaly.png";
 import rekordLogo from "@/assets/logos/rekord-v2.png";
 import indexVenturesLogo from "@/assets/logos/index-ventures-v2.png";
+import loctaxLogo from "@/assets/logos/loctax.png";
 
 const logoWhiteFilter = { filter: "brightness(0) invert(1)" } as const;
 const PER_PAGE = 3;
@@ -24,6 +26,7 @@ type Testimonial = {
   rolesHired: string;
   image?: string;
   logo?: string;
+  logoMaxHeight?: string;
   isPlaceholder?: boolean;
 };
 
@@ -54,7 +57,7 @@ const testimonials: Testimonial[] = [
     author: "Charles Guillemet",
     role: "Venture Partner",
     company: "LocalGlobe",
-    rolesHired: "Founding Designers",
+    rolesHired: "Founding Designers\nSeed & Series A",
     image: charlesImage,
     logo: localglobeLogo,
   },
@@ -64,7 +67,7 @@ const testimonials: Testimonial[] = [
     author: "Alex Most",
     role: "Talent Lead",
     company: "Causaly",
-    rolesHired: "Staff Product Manager (Causaly, Series B)",
+    rolesHired: "Staff Product Manager\nSeries B",
     image: alexImage,
     logo: causalyLogo,
   },
@@ -74,17 +77,20 @@ const testimonials: Testimonial[] = [
     author: "Chris Lynch",
     role: "Co-Founder",
     company: "Rekord",
-    rolesHired: "Founding Product Designer (Rekord, Seed)",
+    rolesHired: "Founding Product Designer\nPre-Seed",
     image: chrisImage,
     logo: rekordLogo,
   },
   {
-    quote: " ",
-    author: "Name",
-    role: "Role",
-    company: "Company",
-    rolesHired: "Role hired",
-    isPlaceholder: true,
+    quote:
+      "Highly recommend Allen at Zest following his excellent work on a critical hire for our business.\n\nThank you, Allen, for your expertise and support throughout the process!",
+    author: "Sumeeta Ahluwalia",
+    role: "Chief Operating Officer",
+    company: "Loctax",
+    rolesHired: "Founding Product Manager\nSeries A",
+    image: sumeetaImage,
+    logo: loctaxLogo,
+    logoMaxHeight: "max-h-10 sm:max-h-11 md:max-h-12",
   },
 ];
 
@@ -105,7 +111,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
         <img
           src={testimonial.logo}
           alt={testimonial.company}
-          className="max-h-8 sm:max-h-9 md:max-h-10 max-w-[88%] w-auto object-contain object-center"
+          className={`${testimonial.logoMaxHeight ?? "max-h-8 sm:max-h-9 md:max-h-10"} max-w-[88%] w-auto object-contain object-center`}
           style={logoWhiteFilter}
         />
       ) : (
@@ -113,7 +119,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
       )}
     </div>
 
-    <span className="mt-3 inline-flex items-center px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium leading-snug">
+    <span className="mt-3 inline-flex items-center px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium leading-snug whitespace-pre-line">
       Hired: {testimonial.rolesHired}
     </span>
 

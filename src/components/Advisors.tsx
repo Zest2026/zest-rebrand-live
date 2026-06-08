@@ -20,11 +20,8 @@ const Advisors = () => {
           <p className="text-lg text-foreground/75 mb-3">
             Alongside searches, we draw on a pre-vetted network of senior Product and Design operators turned advisors who support founders and coach leadership teams at critical moments.
           </p>
-          <p className="text-lg text-foreground/75 mb-2">
+          <p className="text-lg text-foreground/75">
             Our advisors typically help with product vision and strategy, team and leadership development, go-to-market, customer discovery, and improving product impact and metrics.
-          </p>
-          <p className="text-sm text-foreground/60">
-            They&apos;re there to complement and strengthen leaders, not replace them.
           </p>
         </div>
       </div>
