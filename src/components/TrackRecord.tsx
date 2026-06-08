@@ -10,10 +10,13 @@ import productboardLogo from "@/assets/logos/track-record/productboard.png";
 
 const logoWhiteFilter = { filter: "brightness(0) invert(1)" } as const;
 
+const extraLogoTitleGap = new Set(["Perk", "Tebi", "Paysend", "Fonoa"]);
+
 type HireCard = {
   company: string;
   roles: string[];
   logo: string;
+  logoMaxHeight?: string;
 };
 
 const hires: HireCard[] = [
@@ -21,11 +24,11 @@ const hires: HireCard[] = [
   { company: "Productboard", roles: ["Director of Product Design"], logo: productboardLogo },
   { company: "Portswigger", roles: ["VP of Product Management"], logo: portswiggerLogo },
   { company: "Mirelo AI", roles: ["Principal Product Designer"], logo: mireloLogo },
-  { company: "Fonoa", roles: ["Principal Product Manager"], logo: fonoaLogo },
+  { company: "Fonoa", roles: ["Principal Product Manager"], logo: fonoaLogo, logoMaxHeight: "max-h-8" },
   { company: "Gradient Labs", roles: ["Founding Designer"], logo: gradientLabsLogo },
   { company: "Perk", roles: ["Senior Group Product Manager"], logo: perkLogo },
   { company: "Tebi", roles: ["Product Design Lead"], logo: tebiLogo },
-  { company: "Paysend", roles: ["Director of Product"], logo: paysendLogo },
+  { company: "Paysend", roles: ["Director of Product"], logo: paysendLogo, logoMaxHeight: "max-h-8" },
 ];
 
 const TrackRecord = () => {
@@ -49,23 +52,24 @@ const TrackRecord = () => {
             {hires.map((hire) => (
               <div
                 key={hire.company}
-                className="flex flex-col items-center text-center w-full p-5 md:p-6 rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+                className="flex items-center justify-center text-center w-full h-[8.5rem] p-3 md:p-4 rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
               >
-                <div className="h-16 w-full flex items-center justify-center shrink-0">
-                  <img
-                    src={hire.logo}
-                    alt={hire.company}
-                    className="h-8 w-full max-w-[200px] object-contain object-center"
-                    style={logoWhiteFilter}
-                  />
-                </div>
-
-                <div className="mt-4 w-full md:mt-4">
-                  {hire.roles.map((role) => (
-                    <div key={role} className="text-sm text-foreground/80 leading-snug">
-                      {role}
-                    </div>
-                  ))}
+                <div className="flex flex-col items-center w-full">
+                  <div className="h-10 w-full flex items-end justify-center shrink-0">
+                    <img
+                      src={hire.logo}
+                      alt={hire.company}
+                      className={`${hire.logoMaxHeight ?? "max-h-10"} max-w-[220px] w-auto h-auto object-contain object-bottom`}
+                      style={logoWhiteFilter}
+                    />
+                  </div>
+                  <div className={`${extraLogoTitleGap.has(hire.company) ? "mt-3" : "mt-1.5"} w-full`}>
+                    {hire.roles.map((role) => (
+                      <div key={role} className="text-sm text-foreground/80 leading-snug">
+                        {role}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
