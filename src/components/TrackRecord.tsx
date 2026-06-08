@@ -1,13 +1,12 @@
-import { cn } from "@/lib/utils";
-import fonoaLogo from "@/assets/logos/fonoa-v2.png";
-import duvoLogo from "@/assets/logos/duvo.png";
-import gradientLabsLogo from "@/assets/logos/gradient-labs-v2.png";
-import mireloLogo from "@/assets/logos/mirelo.png";
-import paysendLogo from "@/assets/logos/paysend-v2.png";
-import perkLogo from "@/assets/logos/perk-v2.png";
-import portswiggerLogo from "@/assets/logos/portswigger-v2.png";
-import tebiLogo from "@/assets/logos/tebi-v2.png";
-import productboardLogo from "@/assets/logos/productboard.png";
+import duvoLogo from "@/assets/logos/track-record/duvo.png";
+import fonoaLogo from "@/assets/logos/track-record/fonoa.png";
+import gradientLabsLogo from "@/assets/logos/track-record/gradient-labs.png";
+import mireloLogo from "@/assets/logos/track-record/mirelo.png";
+import paysendLogo from "@/assets/logos/track-record/paysend.png";
+import perkLogo from "@/assets/logos/track-record/perk.png";
+import portswiggerLogo from "@/assets/logos/track-record/portswigger.png";
+import tebiLogo from "@/assets/logos/track-record/tebi.png";
+import productboardLogo from "@/assets/logos/track-record/productboard.png";
 
 const logoWhiteFilter = { filter: "brightness(0) invert(1)" } as const;
 
@@ -15,20 +14,18 @@ type HireCard = {
   company: string;
   roles: string[];
   logo: string;
-  logoClassName: string;
 };
 
-// Per-logo max-h + max-w compensate for uneven whitespace in source PNGs
 const hires: HireCard[] = [
-  { company: "Duvo", roles: ["Head of Product & Design"], logo: duvoLogo, logoClassName: "max-h-5 max-w-[50%]" },
-  { company: "Productboard", roles: ["Director of Product Design"], logo: productboardLogo, logoClassName: "max-h-10 max-w-[75%]" },
-  { company: "Portswigger", roles: ["VP of Product Management"], logo: portswiggerLogo, logoClassName: "max-h-5 max-w-[50%]" },
-  { company: "Mirelo AI", roles: ["Principal Product Designer"], logo: mireloLogo, logoClassName: "max-h-7 max-w-[75%]" },
-  { company: "Fonoa", roles: ["Principal Product Manager"], logo: fonoaLogo, logoClassName: "max-h-6 max-w-[75%]" },
-  { company: "Gradient Labs", roles: ["Founding Designer"], logo: gradientLabsLogo, logoClassName: "max-h-10 max-w-[75%]" },
-  { company: "Perk", roles: ["Senior Group Product Manager"], logo: perkLogo, logoClassName: "max-h-14 max-w-[75%]" },
-  { company: "Tebi", roles: ["Product Design Lead"], logo: tebiLogo, logoClassName: "max-h-5 max-w-[50%]" },
-  { company: "Paysend", roles: ["Director of Product"], logo: paysendLogo, logoClassName: "max-h-4 max-w-[45%]" },
+  { company: "Duvo", roles: ["Head of Product & Design"], logo: duvoLogo },
+  { company: "Productboard", roles: ["Director of Product Design"], logo: productboardLogo },
+  { company: "Portswigger", roles: ["VP of Product Management"], logo: portswiggerLogo },
+  { company: "Mirelo AI", roles: ["Principal Product Designer"], logo: mireloLogo },
+  { company: "Fonoa", roles: ["Principal Product Manager"], logo: fonoaLogo },
+  { company: "Gradient Labs", roles: ["Founding Designer"], logo: gradientLabsLogo },
+  { company: "Perk", roles: ["Senior Group Product Manager"], logo: perkLogo },
+  { company: "Tebi", roles: ["Product Design Lead"], logo: tebiLogo },
+  { company: "Paysend", roles: ["Director of Product"], logo: paysendLogo },
 ];
 
 const TrackRecord = () => {
@@ -58,10 +55,7 @@ const TrackRecord = () => {
                   <img
                     src={hire.logo}
                     alt={hire.company}
-                    className={cn(
-                      "w-auto h-auto object-contain object-center",
-                      hire.logoClassName
-                    )}
+                    className="h-8 w-full max-w-[200px] object-contain object-center"
                     style={logoWhiteFilter}
                   />
                 </div>
