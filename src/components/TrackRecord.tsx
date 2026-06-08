@@ -15,56 +15,20 @@ type HireCard = {
   company: string;
   roles: string[];
   logo: string;
-  logoMaxClassName?: string;
-  logoImgClassName?: string;
+  logoClassName: string;
 };
 
+// Per-logo max-h + max-w compensate for uneven whitespace in source PNGs
 const hires: HireCard[] = [
-  { company: "Duvo", roles: ["Head of Product & Design"], logo: duvoLogo },
-  {
-    company: "Productboard",
-    roles: ["Director of Product Design"],
-    logo: productboardLogo,
-    logoMaxClassName: "md:max-h-11",
-  },
-  {
-    company: "Portswigger",
-    roles: ["VP of Product Management"],
-    logo: portswiggerLogo,
-    logoMaxClassName: "md:max-h-9",
-  },
-  {
-    company: "Mirelo AI",
-    roles: ["Principal Product Designer"],
-    logo: mireloLogo,
-    logoMaxClassName: "md:max-h-12",
-  },
-  {
-    company: "Fonoa",
-    roles: ["Principal Product Manager"],
-    logo: fonoaLogo,
-    logoMaxClassName: "md:h-7 md:max-h-none",
-    logoImgClassName: "md:max-w-[140px] md:object-left",
-  },
-  { company: "Gradient Labs", roles: ["Founding Designer"], logo: gradientLabsLogo },
-  {
-    company: "Perk",
-    roles: ["Lead Group Product Manager"],
-    logo: perkLogo,
-    logoMaxClassName: "md:max-h-14",
-  },
-  {
-    company: "Tebi",
-    roles: ["Product Design Lead"],
-    logo: tebiLogo,
-    logoMaxClassName: "md:max-h-8",
-  },
-  {
-    company: "Paysend",
-    roles: ["Director of Product"],
-    logo: paysendLogo,
-    logoMaxClassName: "md:max-h-7",
-  },
+  { company: "Duvo", roles: ["Head of Product & Design"], logo: duvoLogo, logoClassName: "max-h-5 max-w-[50%]" },
+  { company: "Productboard", roles: ["Director of Product Design"], logo: productboardLogo, logoClassName: "max-h-10 max-w-[75%]" },
+  { company: "Portswigger", roles: ["VP of Product Management"], logo: portswiggerLogo, logoClassName: "max-h-5 max-w-[50%]" },
+  { company: "Mirelo AI", roles: ["Principal Product Designer"], logo: mireloLogo, logoClassName: "max-h-7 max-w-[75%]" },
+  { company: "Fonoa", roles: ["Principal Product Manager"], logo: fonoaLogo, logoClassName: "max-h-6 max-w-[75%]" },
+  { company: "Gradient Labs", roles: ["Founding Designer"], logo: gradientLabsLogo, logoClassName: "max-h-10 max-w-[75%]" },
+  { company: "Perk", roles: ["Senior Group Product Manager"], logo: perkLogo, logoClassName: "max-h-14 max-w-[75%]" },
+  { company: "Tebi", roles: ["Product Design Lead"], logo: tebiLogo, logoClassName: "max-h-5 max-w-[50%]" },
+  { company: "Paysend", roles: ["Director of Product"], logo: paysendLogo, logoClassName: "max-h-4 max-w-[45%]" },
 ];
 
 const TrackRecord = () => {
@@ -90,14 +54,13 @@ const TrackRecord = () => {
                 key={hire.company}
                 className="flex flex-col items-center text-center w-full p-5 md:p-6 rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
               >
-                <div className="h-16 md:h-16 w-full flex items-center justify-center shrink-0">
+                <div className="h-16 w-full flex items-center justify-center shrink-0">
                   <img
                     src={hire.logo}
                     alt={hire.company}
                     className={cn(
-                      "h-11 w-auto max-w-[70%] object-contain object-center md:h-auto md:max-w-[88%] md:max-h-none",
-                      hire.logoMaxClassName ?? "md:max-h-10",
-                      hire.logoImgClassName
+                      "w-auto h-auto object-contain object-center",
+                      hire.logoClassName
                     )}
                     style={logoWhiteFilter}
                   />

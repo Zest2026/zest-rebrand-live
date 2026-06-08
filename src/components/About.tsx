@@ -15,7 +15,7 @@ const About = () => {
             Founder-led. <br />Deliberately Selective.
           </h2>
           <p className="text-lg text-foreground/75 mb-4">
-            We&apos;re Allen and Luke - old colleagues, good friends, and now co-founders of Zest Search. For the last decade we&apos;ve each specialised in one thing: hiring great Product and Design leaders across Europe.
+            We&apos;re Allen and Luke - long-time collaborators, good friends, and now co-founders of Zest Search. For the last decade, we&apos;ve each specialised in one thing: hiring great Product and Design leaders across Europe.
           </p>
           <p className="text-lg text-foreground/75">
             We only take on searches where we&apos;re confident we can deliver an exceptional outcome. No handovers, no layers - every mandate is run directly by one of us, from brief to signed offer.
