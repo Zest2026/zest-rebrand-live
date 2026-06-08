@@ -22,13 +22,13 @@ type HireCard = {
 const hires: HireCard[] = [
   { company: "Duvo", roles: ["Head of Product & Design"], logo: duvoLogo },
   { company: "Productboard", roles: ["Director of Product Design"], logo: productboardLogo },
-  { company: "Portswigger", roles: ["VP of Product Management"], logo: portswiggerLogo },
+  { company: "Portswigger", roles: ["VP of Product Management"], logo: portswiggerLogo, logoMaxHeight: "max-h-8" },
   { company: "Mirelo AI", roles: ["Principal Product Designer"], logo: mireloLogo },
   { company: "Fonoa", roles: ["Principal Product Manager"], logo: fonoaLogo, logoMaxHeight: "max-h-8" },
   { company: "Gradient Labs", roles: ["Founding Designer"], logo: gradientLabsLogo },
   { company: "Perk", roles: ["Senior Group Product Manager"], logo: perkLogo },
-  { company: "Tebi", roles: ["Product Design Lead"], logo: tebiLogo },
-  { company: "Paysend", roles: ["Director of Product"], logo: paysendLogo, logoMaxHeight: "max-h-8" },
+  { company: "Tebi", roles: ["Product Design Lead"], logo: tebiLogo, logoMaxHeight: "max-h-8" },
+  { company: "Paysend", roles: ["Director of Product"], logo: paysendLogo, logoMaxHeight: "max-h-7" },
 ];
 
 const TrackRecord = () => {

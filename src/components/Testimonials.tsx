@@ -89,9 +89,133 @@ const testimonials: Testimonial[] = [
 ];
 
 const pageCount = Math.ceil(testimonials.length / PER_PAGE);
+const mobileTestimonials = testimonials.filter((testimonial) => !testimonial.isPlaceholder);
+
+const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
+  <article
+    className={cn(
+      "flex flex-col items-center text-center p-4 sm:p-5 md:p-6 rounded-2xl bg-card border-2 border-foreground/15 transition-all duration-300",
+      testimonial.isPlaceholder
+        ? "border-dashed border-foreground/10 opacity-40"
+        : "border-foreground/15 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+    )}
+  >
+    <div className="h-12 sm:h-14 md:h-16 w-full flex items-center justify-center shrink-0">
+      {testimonial.logo ? (
+        <img
+          src={testimonial.logo}
+          alt={testimonial.company}
+          className="max-h-8 sm:max-h-9 md:max-h-10 max-w-[88%] w-auto object-contain object-center"
+          style={logoWhiteFilter}
+        />
+      ) : (
+        <span className="text-xs text-foreground/40">Company logo</span>
+      )}
+    </div>
+
+    <span className="mt-3 inline-flex items-center px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium leading-snug">
+      Hired: {testimonial.rolesHired}
+    </span>
+
+    <div className="mt-4 flex flex-col items-center gap-2">
+      {testimonial.image ? (
+        <img
+          src={testimonial.image}
+          alt={testimonial.author}
+          className="w-12 h-12 sm:h-14 sm:w-14 md:h-16 md:w-16 rounded-full object-cover ring-2 ring-primary/20"
+        />
+      ) : (
+        <div
+          className="w-12 h-12 sm:h-14 sm:w-14 md:h-16 md:w-16 rounded-full bg-foreground/10 ring-2 ring-foreground/10"
+          aria-hidden
+        />
+      )}
+      <div>
+        <p className="text-base sm:text-lg font-bold tracking-tight">{testimonial.author}</p>
+        <p className="text-sm text-foreground/60">{testimonial.role}</p>
+      </div>
+    </div>
+
+    <Quote className="w-5 h-5 text-primary/30 mt-4 shrink-0" />
+
+    <blockquote className="mt-2 text-xs sm:text-sm text-foreground/80 leading-relaxed whitespace-pre-line text-left w-full min-h-[6rem] sm:min-h-[7rem]">
+      {testimonial.isPlaceholder ? (
+        <span className="text-foreground/40">Quote</span>
+      ) : (
+        <>&ldquo;{testimonial.quote}&rdquo;</>
+      )}
+    </blockquote>
+  </article>
+);
+
+type CarouselControlsProps = {
+  index: number;
+  count: number;
+  onPrev: () => void;
+  onNext: () => void;
+  onSelect: (index: number) => void;
+  prevLabel: string;
+  nextLabel: string;
+  dotLabel: (index: number) => string;
+};
+
+const CarouselControls = ({
+  index,
+  count,
+  onPrev,
+  onNext,
+  onSelect,
+  prevLabel,
+  nextLabel,
+  dotLabel,
+}: CarouselControlsProps) => {
+  if (count <= 1) return null;
+
+  return (
+    <div className="flex items-center justify-center gap-4 mt-8">
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={onPrev}
+        disabled={index === 0}
+        className="rounded-full"
+        aria-label={prevLabel}
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </Button>
+
+      <div className="flex gap-2">
+        {Array.from({ length: count }).map((_, dotIndex) => (
+          <button
+            key={dotIndex}
+            type="button"
+            onClick={() => onSelect(dotIndex)}
+            aria-label={dotLabel(dotIndex)}
+            className={cn(
+              "h-2 rounded-full transition-all duration-300",
+              dotIndex === index ? "w-6 bg-primary" : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+            )}
+          />
+        ))}
+      </div>
+
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={onNext}
+        disabled={index === count - 1}
+        className="rounded-full"
+        aria-label={nextLabel}
+      >
+        <ChevronRight className="w-5 h-5" />
+      </Button>
+    </div>
+  );
+};
 
 const Testimonials = () => {
   const [page, setPage] = useState(0);
+  const [mobileIndex, setMobileIndex] = useState(0);
   const visible = testimonials.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
 
   return (
@@ -108,106 +232,41 @@ const Testimonials = () => {
             What founders, investors and talent leaders say about working with Zest.
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 items-stretch">
+          <div className="md:hidden">
+            <TestimonialCard testimonial={mobileTestimonials[mobileIndex]} />
+            <CarouselControls
+              index={mobileIndex}
+              count={mobileTestimonials.length}
+              onPrev={() => setMobileIndex((index) => Math.max(0, index - 1))}
+              onNext={() => setMobileIndex((index) => Math.min(mobileTestimonials.length - 1, index + 1))}
+              onSelect={setMobileIndex}
+              prevLabel="Previous testimonial"
+              nextLabel="Next testimonial"
+              dotLabel={(index) => `Show testimonial ${index + 1}`}
+            />
+          </div>
+
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 items-stretch">
             {visible.map((testimonial) => (
-              <article
+              <TestimonialCard
                 key={testimonial.isPlaceholder ? "placeholder" : testimonial.author}
-                className={cn(
-                  "flex flex-col items-center text-center p-4 sm:p-5 md:p-6 rounded-2xl bg-card border-2 border-foreground/15 transition-all duration-300",
-                  testimonial.isPlaceholder
-                    ? "border-dashed border-foreground/10 opacity-40"
-                    : "border-foreground/15 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
-                )}
-              >
-                <div className="h-12 sm:h-14 md:h-16 w-full flex items-center justify-center shrink-0">
-                  {testimonial.logo ? (
-                    <img
-                      src={testimonial.logo}
-                      alt={testimonial.company}
-                      className="max-h-8 sm:max-h-9 md:max-h-10 max-w-[88%] w-auto object-contain object-center"
-                      style={logoWhiteFilter}
-                    />
-                  ) : (
-                    <span className="text-xs text-foreground/40">Company logo</span>
-                  )}
-                </div>
-
-                <span className="mt-3 inline-flex items-center px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium leading-snug">
-                  Hired: {testimonial.rolesHired}
-                </span>
-
-                <div className="mt-4 flex flex-col items-center gap-2">
-                  {testimonial.image ? (
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.author}
-                      className="w-12 h-12 sm:h-14 sm:w-14 md:h-16 md:w-16 rounded-full object-cover ring-2 ring-primary/20"
-                    />
-                  ) : (
-                    <div
-                      className="w-12 h-12 sm:h-14 sm:w-14 md:h-16 md:w-16 rounded-full bg-foreground/10 ring-2 ring-foreground/10"
-                      aria-hidden
-                    />
-                  )}
-                  <div>
-                    <p className="text-base sm:text-lg font-bold tracking-tight">{testimonial.author}</p>
-                    <p className="text-sm text-foreground/60">{testimonial.role}</p>
-                  </div>
-                </div>
-
-                <Quote className="w-5 h-5 text-primary/30 mt-4 shrink-0" />
-
-                <blockquote className="mt-2 text-xs sm:text-sm text-foreground/80 leading-relaxed whitespace-pre-line text-left w-full min-h-[6rem] sm:min-h-[7rem]">
-                  {testimonial.isPlaceholder ? (
-                    <span className="text-foreground/40">Quote</span>
-                  ) : (
-                    <>&ldquo;{testimonial.quote}&rdquo;</>
-                  )}
-                </blockquote>
-              </article>
+                testimonial={testimonial}
+              />
             ))}
           </div>
 
-          {pageCount > 1 && (
-            <div className="flex items-center justify-center gap-4 mt-8">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => setPage((p) => Math.max(0, p - 1))}
-                disabled={page === 0}
-                className="rounded-full"
-                aria-label="Previous testimonials"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </Button>
-
-              <div className="flex gap-2">
-                {Array.from({ length: pageCount }).map((_, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    onClick={() => setPage(index)}
-                    aria-label={`Show testimonials page ${index + 1}`}
-                    className={cn(
-                      "h-2 rounded-full transition-all duration-300",
-                      index === page ? "w-6 bg-primary" : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                    )}
-                  />
-                ))}
-              </div>
-
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
-                disabled={page === pageCount - 1}
-                className="rounded-full"
-                aria-label="Next testimonials"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </Button>
-            </div>
-          )}
+          <div className="hidden md:block">
+            <CarouselControls
+              index={page}
+              count={pageCount}
+              onPrev={() => setPage((p) => Math.max(0, p - 1))}
+              onNext={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
+              onSelect={setPage}
+              prevLabel="Previous testimonials"
+              nextLabel="Next testimonials"
+              dotLabel={(index) => `Show testimonials page ${index + 1}`}
+            />
+          </div>
         </div>
       </div>
     </section>
