@@ -128,11 +128,11 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
         <img
           src={testimonial.image}
           alt={testimonial.author}
-          className="w-12 h-12 sm:h-14 sm:w-14 md:h-16 md:w-16 rounded-full object-cover ring-2 ring-primary/20"
+          className="w-16 h-16 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-full object-cover ring-2 ring-primary/20"
         />
       ) : (
         <div
-          className="w-12 h-12 sm:h-14 sm:w-14 md:h-16 md:w-16 rounded-full bg-foreground/10 ring-2 ring-foreground/10"
+          className="w-16 h-16 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-full bg-foreground/10 ring-2 ring-foreground/10"
           aria-hidden
         />
       )}
