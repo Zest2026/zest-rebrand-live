@@ -59,7 +59,7 @@ const ContactModal = ({ children, open: controlledOpen, onOpenChange }: ContactM
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       {children && <DialogTrigger asChild>{children}</DialogTrigger>}
-      <DialogContent className="sm:max-w-md bg-card border-2 border-foreground/15">
+      <DialogContent className="w-[calc(100%-2rem)] sm:max-w-md max-h-[90dvh] overflow-y-auto rounded-2xl bg-card border-2 border-foreground/15">
         {status === "success" ? (
           <div className="py-8 text-center">
             <DialogHeader>
@@ -115,7 +115,7 @@ const ContactModal = ({ children, open: controlledOpen, onOpenChange }: ContactM
                   name="message"
                   required
                   placeholder="Tell us about the role you're hiring for, or your next move..."
-                  className="min-h-[120px]"
+                  className="min-h-[120px] text-base md:text-sm"
                 />
               </div>
 
