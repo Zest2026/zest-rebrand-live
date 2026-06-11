@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Linkedin } from "lucide-react";
+import ContactModal from "@/components/ContactModal";
 
 const Contact = () => {
   return (
@@ -14,13 +15,13 @@ const Contact = () => {
             Hiring a Product or Design leader, or ready for your next career move?
           </h2>
 
-          <Button variant="hero" size="xl" className="group" asChild>
-            <a href="mailto:hello@zestsearch.com">
+          <ContactModal>
+            <Button variant="hero" size="xl" className="group">
               <Mail className="w-5 h-5" />
               Get in Touch
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </Button>
+            </Button>
+          </ContactModal>
         </div>
       </div>
     </section>

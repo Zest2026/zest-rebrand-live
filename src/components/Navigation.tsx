@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import zestLogo from "@/assets/zest-logo-full.png";
+import ContactModal from "@/components/ContactModal";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,9 +34,9 @@ const Navigation = () => {
                 {link.label}
               </a>
             ))}
-            <Button variant="yellow" size="default" asChild>
-              <a href="mailto:hello@zestsearch.com">Get in Touch</a>
-            </Button>
+            <ContactModal>
+              <Button variant="yellow" size="default">Get in Touch</Button>
+            </ContactModal>
           </div>
 
           {/* Mobile Menu Button */}
@@ -62,9 +63,11 @@ const Navigation = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="yellow" size="lg" className="mt-4" asChild>
-                <a href="mailto:hello@zestsearch.com" onClick={() => setIsOpen(false)}>Get in Touch</a>
-              </Button>
+              <ContactModal>
+                <Button variant="yellow" size="lg" className="mt-4" onClick={() => setIsOpen(false)}>
+                  Get in Touch
+                </Button>
+              </ContactModal>
             </div>
           </div>
         )}
