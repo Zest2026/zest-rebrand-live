@@ -18,8 +18,16 @@ const WEB3FORMS_ACCESS_KEY = "bc926f83-41cf-4320-b462-e4f836c5c525";
 
 type Status = "idle" | "sending" | "success" | "error";
 
-const ContactModal = ({ children }: { children: ReactNode }) => {
-  const [open, setOpen] = useState(false);
+type ContactModalProps = {
+  children?: ReactNode;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+};
+
+const ContactModal = ({ children, open: controlledOpen, onOpenChange }: ContactModalProps) => {
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
+  const open = controlledOpen ?? uncontrolledOpen;
+  const setOpen = onOpenChange ?? setUncontrolledOpen;
   const [status, setStatus] = useState<Status>("idle");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -50,7 +58,7 @@ const ContactModal = ({ children }: { children: ReactNode }) => {
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+      {children && <DialogTrigger asChild>{children}</DialogTrigger>}
       <DialogContent className="sm:max-w-md bg-card border-2 border-foreground/15">
         {status === "success" ? (
           <div className="py-8 text-center">

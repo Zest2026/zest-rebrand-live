@@ -6,6 +6,7 @@ import ContactModal from "@/components/ContactModal";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
 
   const navLinks = [
     { label: "What We Do", href: "#services" },
@@ -63,15 +64,23 @@ const Navigation = () => {
                   {link.label}
                 </a>
               ))}
-              <ContactModal>
-                <Button variant="yellow" size="lg" className="mt-4" onClick={() => setIsOpen(false)}>
-                  Get in Touch
-                </Button>
-              </ContactModal>
+              <Button
+                variant="yellow"
+                size="lg"
+                className="mt-4"
+                onClick={() => {
+                  setIsOpen(false);
+                  setContactOpen(true);
+                }}
+              >
+                Get in Touch
+              </Button>
             </div>
           </div>
         )}
       </div>
+
+      <ContactModal open={contactOpen} onOpenChange={setContactOpen} />
     </nav>
   );
 };
