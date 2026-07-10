@@ -21,7 +21,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-28">
           {/* Logo */}
           <a href="#" className="flex items-center">
-            <img src={zestLogo} alt="Zest Search" className="h-[4.5rem] w-auto" />
+            <img src={zestLogo} alt="Zest Search" className="h-16 w-auto" />
           </a>
 
           {/* Desktop Navigation */}
