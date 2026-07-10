@@ -1,0 +1,24 @@
+{
+  "redirects": [
+    { "source": "/how-we-work", "destination": "/", "permanent": true },
+    { "source": "/how-we-work/:path*", "destination": "/", "permanent": true },
+    { "source": "/blog", "destination": "/", "permanent": true },
+    { "source": "/blog/:path*", "destination": "/", "permanent": true },
+    { "source": "/about", "destination": "/", "permanent": true },
+    { "source": "/about-us", "destination": "/", "permanent": true },
+    { "source": "/contact", "destination": "/", "permanent": true },
+    { "source": "/contact-us", "destination": "/", "permanent": true },
+    { "source": "/services", "destination": "/", "permanent": true },
+    { "source": "/team", "destination": "/", "permanent": true },
+    { "source": "/jobs", "destination": "/", "permanent": true },
+    { "source": "/jobs/:path*", "destination": "/", "permanent": true },
+    { "source": "/candidates", "destination": "/", "permanent": true },
+    { "source": "/clients", "destination": "/", "permanent": true },
+    { "source": "/testimonials", "destination": "/", "permanent": true },
+    { "source": "/privacy-policy", "destination": "/", "permanent": true },
+    { "source": "/terms", "destination": "/", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/:path*", "destination": "/index.html" }
+  ]
+}
