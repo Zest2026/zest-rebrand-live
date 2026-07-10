@@ -13,7 +13,7 @@ const Index = () => {
   return (
     <div className="min-h-screen text-foreground bg-gradient-to-b from-[hsl(220,25%,7%)] via-[hsl(220,30%,10%)] via-[hsl(220,25%,8%)] to-[hsl(220,25%,7%)]">
       <Navigation />
-      <main className="pt-20">
+      <main className="pt-28">
         <Hero />
         <Services />
         <TrackRecord />

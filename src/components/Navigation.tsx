@@ -18,25 +18,25 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-28">
           {/* Logo */}
           <a href="#" className="flex items-center">
-            <img src={zestLogo} alt="Zest Search" className="h-20 w-auto" />
+            <img src={zestLogo} alt="Zest Search" className="h-[4.5rem] w-auto" />
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                className="text-base font-medium text-foreground hover:text-primary transition-colors"
               >
                 {link.label}
               </a>
             ))}
             <ContactModal>
-              <Button variant="yellow" size="default">Get in Touch</Button>
+              <Button variant="yellow" size="default" className="text-base">Get in Touch</Button>
             </ContactModal>
           </div>
 
