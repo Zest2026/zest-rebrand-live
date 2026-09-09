@@ -46,7 +46,8 @@ const Hero = () => {
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-foreground/75 max-w-2xl mb-10 animate-fade-up animation-delay-300">
-            Trusted by top-tier VCs, including Index Ventures.
+            Trusted by top-tier VCs, including{" "}
+            <span className="block sm:inline">Index Ventures.</span>
           </p>
 
         </div>
