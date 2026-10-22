@@ -10,6 +10,7 @@ const founders = [
     bio: "13+ years' experience in product management recruitment across Europe and North America.",
     initials: "AB",
     image: allenImage,
+    imageContentClassName: "translate-y-3",
     linkedin: "https://www.linkedin.com/in/allenbastow/",
   },
   {
@@ -55,11 +56,13 @@ const Services = () => {
                 className="flex items-start gap-4 p-5 h-full w-full rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 text-left"
               >
                 {founder.image ? (
-                  <img
-                    src={founder.image}
-                    alt={founder.name}
-                    className="w-28 h-28 rounded-full object-cover shrink-0 ring-2 ring-primary/20 scale-[0.92] translate-y-1"
-                  />
+                  <div className="w-28 h-28 rounded-full shrink-0 ring-2 ring-primary/20 overflow-hidden">
+                    <img
+                      src={founder.image}
+                      alt={founder.name}
+                      className={`w-full h-full object-cover scale-[0.92] ${founder.imageContentClassName ?? ""}`}
+                    />
+                  </div>
                 ) : (
                   <div className="w-28 h-28 rounded-full bg-primary/20 flex items-center justify-center shrink-0 ring-2 ring-primary/20">
                     <span className="text-2xl font-bold text-primary">{founder.initials}</span>
