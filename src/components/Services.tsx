@@ -10,7 +10,7 @@ const founders = [
     bio: "13+ years' experience in product management recruitment across Europe and North America.",
     initials: "AB",
     image: allenImage,
-    imageContentClassName: "translate-y-3",
+    imageContentClassName: "object-[50%_36%] scale-[1.00]",
     linkedin: "https://www.linkedin.com/in/allenbastow/",
   },
   {
@@ -20,6 +20,7 @@ const founders = [
     bio: "12 years' experience in product design recruitment across Europe.",
     initials: "LP",
     image: lukeImage,
+    imageContentClassName: "object-[50%_62%] scale-[1.08]",
     linkedin: "https://www.linkedin.com/in/luke-pallett/",
   },
 ];
@@ -60,7 +61,7 @@ const Services = () => {
                     <img
                       src={founder.image}
                       alt={founder.name}
-                      className={`w-full h-full object-cover scale-[0.92] ${founder.imageContentClassName ?? ""}`}
+                      className={`w-full h-full object-cover ${founder.imageContentClassName ?? ""}`}
                     />
                   </div>
                 ) : (
