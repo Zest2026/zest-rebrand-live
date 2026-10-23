@@ -10,7 +10,7 @@ const founders = [
     bio: "13+ years' experience partnering with businesses to hire product leaders across Europe & North America.",
     initials: "AB",
     image: allenImage,
-    imageContentClassName: "object-[50%_36%] scale-[1.00]",
+    imageContentClassName: "object-[50%_34%] scale-[1.00]",
     linkedin: "https://www.linkedin.com/in/allenbastow/",
   },
   {
