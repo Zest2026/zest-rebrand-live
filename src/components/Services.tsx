@@ -20,7 +20,7 @@ const founders = [
     bio: "13+ years' experience partnering with businesses to hire design leaders across Europe.",
     initials: "LP",
     image: lukeImage,
-    imageContentClassName: "object-[50%_68%] scale-[1.08]",
+    imageContentClassName: "object-[50%_71%] scale-[1.08]",
     linkedin: "https://www.linkedin.com/in/luke-pallett/",
   },
 ];
