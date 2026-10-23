@@ -82,9 +82,9 @@ const Services = () => {
                       <Linkedin size={17} />
                     </a>
                   </div>
-                  <p className="text-sm text-foreground/60">{founder.role}</p>
+                  <p className="text-[15px] text-foreground/60">{founder.role}</p>
                   {founder.bio && (
-                    <p className="text-[13px] text-foreground/50 mt-1.5 min-h-[3.25rem] leading-relaxed">{founder.bio}</p>
+                    <p className="text-sm text-foreground/50 mt-1.5 min-h-[3.25rem] leading-relaxed">{founder.bio}</p>
                   )}
                 </div>
               </div>
