@@ -10,6 +10,7 @@ const founders = [
     bio: "13+ years' experience in product management recruitment across Europe and North America.",
     initials: "AB",
     image: allenImage,
+    imageContentClassName: "object-[50%_36%] scale-[1.00]",
     linkedin: "https://www.linkedin.com/in/allenbastow/",
   },
   {
@@ -19,6 +20,7 @@ const founders = [
     bio: "12 years' experience in product design recruitment across Europe.",
     initials: "LP",
     image: lukeImage,
+    imageContentClassName: "object-[50%_66%] scale-[1.08]",
     linkedin: "https://www.linkedin.com/in/luke-pallett/",
   },
 ];
@@ -48,35 +50,41 @@ const Services = () => {
           </div>
 
           {/* Founders side by side */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto mt-4 items-stretch">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 max-w-5xl mx-auto mt-6 items-stretch">
             {founders.map((founder) => (
               <div
                 key={founder.name}
-                className="flex items-start gap-4 p-5 h-full w-full rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 text-left"
+                className="flex items-start gap-5 p-6 lg:p-7 h-full w-full rounded-2xl bg-card border-2 border-foreground/15 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 text-left"
               >
                 {founder.image ? (
-                  <img src={founder.image} alt={founder.name} className="w-28 h-28 rounded-full object-cover shrink-0 ring-2 ring-primary/20" />
+                  <div className="w-32 h-32 lg:w-36 lg:h-36 rounded-full shrink-0 ring-2 ring-primary/20 overflow-hidden">
+                    <img
+                      src={founder.image}
+                      alt={founder.name}
+                      className={`w-full h-full object-cover ${founder.imageContentClassName ?? ""}`}
+                    />
+                  </div>
                 ) : (
-                  <div className="w-28 h-28 rounded-full bg-primary/20 flex items-center justify-center shrink-0 ring-2 ring-primary/20">
-                    <span className="text-2xl font-bold text-primary">{founder.initials}</span>
+                  <div className="w-32 h-32 lg:w-36 lg:h-36 rounded-full bg-primary/20 flex items-center justify-center shrink-0 ring-2 ring-primary/20">
+                    <span className="text-3xl font-bold text-primary">{founder.initials}</span>
                   </div>
                 )}
                 <div className="flex flex-col flex-1 min-w-0">
-                  <p className="text-sm font-medium text-primary mb-1">{founder.focus}</p>
+                  <p className="text-base font-medium text-primary mb-1.5">{founder.focus}</p>
                   <div className="flex items-center gap-2">
-                    <p className="text-lg font-bold tracking-tight">{founder.name}</p>
+                    <p className="text-xl lg:text-2xl font-bold tracking-tight">{founder.name}</p>
                     <a 
                       href={founder.linkedin} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-primary hover:scale-110 transition-all duration-200"
                     >
-                      <Linkedin size={16} />
+                      <Linkedin size={18} />
                     </a>
                   </div>
-                  <p className="text-sm text-foreground/60">{founder.role}</p>
+                  <p className="text-base text-foreground/60">{founder.role}</p>
                   {founder.bio && (
-                    <p className="text-xs text-foreground/50 mt-1 min-h-[2.75rem] leading-relaxed">{founder.bio}</p>
+                    <p className="text-sm text-foreground/50 mt-2 min-h-[3.5rem] leading-relaxed">{founder.bio}</p>
                   )}
                 </div>
               </div>
