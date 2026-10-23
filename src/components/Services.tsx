@@ -17,7 +17,7 @@ const founders = [
     name: "Luke Pallett",
     role: "Co-Founder",
     focus: "Design Search",
-    bio: "13+ years' experience partnering with businesses to hire design leaders across Europe.",
+    bio: "13+ years' of experience helping businesses hire senior design leaders across Europe.",
     initials: "LP",
     image: lukeImage,
     imageContentClassName: "object-[50%_77%] scale-[1.08]",
